@@ -1,0 +1,17 @@
+{
+  "stable_baseline": "PASS",
+  "drift_adequate": "PASS",
+  "distributed_pressure": "PASS",
+  "concentrated_pressure": "FAIL",
+  "injection_rejected": "PASS",
+  "adoption_blocked": "FAIL",
+  "uncontained_action": "FAIL",
+  "semantic_drift": "FAIL",
+  "retention_lost": "FAIL",
+  "visibility_gap": "UNRESOLVED",
+  "self_certificate": "FAIL",
+  "evaluator_is_actor": "FAIL",
+  "control_changed": "UNRESOLVED",
+  "zero_margin": "PASS",
+  "benign_overblocked": "FAIL"
+}

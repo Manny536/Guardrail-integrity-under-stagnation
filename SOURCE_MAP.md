@@ -19,3 +19,7 @@ All local IDs below belong to `PEAICE-SIUS-001`. This application consumes the e
 External mathematical sources are linked in the grounding note. OpenAI's formalization was inspected at commit `f9e8bc5b38b6e212696e8a30e3e91517af887bbd`. This project did not independently rebuild it. Neither the publication nor its use of multiple agents validates GIUS.
 
 The supplied SIUS manuscript's unsupported incident assertions are not imported as verified facts. The original DOCX artifacts remain with their existing research-report provenance; this repository publishes the scoped application note rather than duplicating source binaries.
+
+## External case dependencies
+
+[Case](docs/case-studies/hugging-face-2026.md) is owned here. [Source register](https://github.com/Manny536/researchengineeringreports/blob/research/gius-hf-2026/reports/sources/hugging-face-2026.md) and [working article](https://github.com/Manny536/researchengineeringreports/blob/research/gius-hf-2026/reports/when-the-boundary-becomes-the-search-space.md) are owned by researchengineeringreports. [L2C-H-001](https://github.com/Manny536/love2-coherence-core/blob/research/gius-hf-2026/docs/evaluator-non-sovereignty.md) owns the non-sovereignty dependency. Review-branch links deliberately resolve before merge and should be repinned if branches are retired.

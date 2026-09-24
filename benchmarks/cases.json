@@ -13,5 +13,15 @@
   "evaluator_is_actor": "FAIL",
   "control_changed": "UNRESOLVED",
   "zero_margin": "PASS",
-  "benign_overblocked": "FAIL"
+  "benign_overblocked": "FAIL",
+  "safe_exit": "PASS",
+  "false_safe_exit": "FAIL",
+  "boundary_represented": "PASS",
+  "authorized_boundary_diagnostic": "PASS",
+  "boundary_directed_blocked": "FAIL",
+  "peer_go_rejected": "PASS",
+  "peer_go_adopted": "FAIL",
+  "alternate_path_blocked": "PASS",
+  "patch_only_retained": "FAIL",
+  "alternate_path_unknown": "UNRESOLVED"
 }

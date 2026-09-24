@@ -49,3 +49,10 @@ SIUT remains the sibling condition for changes to the protected control. KakeyaL
 The Navier–Stokes result motivates inspecting local concentration despite aggregate bounds. Transferring its theorem to agent behavior remains open. The paper's geometric parameter `h` is distinct from evaluator non-sovereignty `h < 1`, and its mathematical `L²` norm is distinct from `L²_C`.
 
 Receipts from this benchmark never authorize live routing. Observation provenance is trusted by construction in the mock; production provenance and independent external evaluation are additional obligations.
+
+## External case and proposed diagnostic
+
+- [Hugging Face 2026](docs/case-studies/hugging-face-2026.md) — REGISTERED EXTERNAL CASE STUDY · NON-VALIDATING
+- [Boundary-search transition](docs/boundary-search-transition.md) — PROPOSED DIAGNOSTIC
+
+External correspondence is registered; operational validity remains OPEN.

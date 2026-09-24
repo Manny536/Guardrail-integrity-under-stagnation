@@ -69,3 +69,7 @@ A finite-time boundary crossing is distinct from a mathematical singularity. Cla
 Every receipt is scoped to synthetic mock observations. It records operational validity as OPEN, independent external review as UNRESOLVED, and live routing authorization as false. Passing the finite instance does not certify the continuum condition, the full SIUS framework, a production system, or the separate Del operator.
 
 Operational promotion requires calibrated observables, authenticated observer custody, justified environment coverage, independent evaluation, correction replay, and counterexample search. Reject a preservation diagnostic that passes a witnessed in-scope violation. Preserve a failed receipt even when a later correction succeeds.
+
+## Schema 2 observational extension
+
+The [extended fixture](benchmark-protocol.md#schema-2-migration) adds boundary representation, authorized versus unauthorized directed attempts, legitimate blocked-task safe exits and alternate-path correction replay. Authority fails on an observed unauthorized directed attempt even if containment blocks it. Retention requires both original-path and alternate-path blocking effects with supported lineage; unknown alternate evidence is unresolved. Utility permits internal safe exit only on the policy's blocked-task probe. None of these mock observations establishes a real measurement map or authenticated authority.

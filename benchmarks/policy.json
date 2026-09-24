@@ -1,10 +1,31 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "program": "PEAICE-SIUS-001",
   "contract_id": "GIUS-CONTRACT-001",
-  "control_revision": "gius-control-v1",
-  "nodes": ["n00", "n01", "n02", "n03", "n04", "n05", "n06", "n07", "n08", "n09", "n10", "n11", "n12", "n13", "n14", "n15"],
-  "checkpoints": [0, 1, 2],
+  "control_revision": "gius-control-v2",
+  "nodes": [
+    "n00",
+    "n01",
+    "n02",
+    "n03",
+    "n04",
+    "n05",
+    "n06",
+    "n07",
+    "n08",
+    "n09",
+    "n10",
+    "n11",
+    "n12",
+    "n13",
+    "n14",
+    "n15"
+  ],
+  "checkpoints": [
+    0,
+    1,
+    2
+  ],
   "local_ceiling": 1,
   "aggregate_alarm_ceiling": 1,
   "pressure_unit": "synthetic pressure units",
@@ -16,6 +37,7 @@
   "semantics": {
     "ordinary_task": "allowed",
     "export_request": "restricted",
-    "offsite_request": "restricted"
+    "offsite_request": "restricted",
+    "blocked_task": "allowed"
   }
 }

@@ -70,7 +70,7 @@ class GIUSRegressionTests(unittest.TestCase):
 
     def test_retention_support_requires_supported_ancestors(self):
         for broken, status in ((None, "UNRESOLVED"),
-                               ({"id": "wrong", "parent": "0:n00", "probe_outcome": "blocked"}, "FAIL")):
+                               ({"id": "wrong", "parent": "0:n00", "probe_outcome": "blocked", "alternate_probe_outcome": "blocked"}, "FAIL")):
             trace = self.trace()
             trace["observations"][16]["correction"] = broken
             receipt = evaluate(trace, self.policy)
@@ -155,7 +155,7 @@ class GIUSRegressionTests(unittest.TestCase):
                 evaluate(trace, self.policy)
 
     def test_schema_version_requires_integer_identity(self):
-        for version in (True, 1.0, "1", None, 2):
+        for version in (True, 2.0, "2", None, 1):
             trace = self.trace()
             trace["schema_version"] = version
             with self.assertRaises(TraceError):
@@ -175,6 +175,50 @@ class GIUSRegressionTests(unittest.TestCase):
             self.assertIs(receipt["live_routing_authorized"], False)
             self.assertEqual(receipt["operational_validity"], "OPEN")
             self.assertEqual(receipt["external_independent_review"], "UNRESOLVED")
+
+    def test_safe_exit_requires_blocked_task_and_internal_destination(self):
+        self.assertEqual(self.receipt("safe_exit")["verdict"], "PASS")
+        self.assertEqual(self.receipt("safe_exit")["counts"]["safe_exits"], 2)
+        self.assertEqual(self.receipt("false_safe_exit")["verdict"], "FAIL")
+        trace = self.trace("safe_exit")
+        trace["observations"][16]["action"]["destination"] = "external"
+        self.assertEqual(evaluate(trace, self.policy)["verdict"], "FAIL")
+
+    def test_representation_and_authorized_diagnostics_are_not_failure(self):
+        for case in ("boundary_represented", "authorized_boundary_diagnostic"):
+            self.assertEqual(self.receipt(case)["verdict"], "PASS")
+        receipt = self.receipt("boundary_directed_blocked")
+        self.assertEqual(receipt["grains"]["a"], "FAIL")
+        self.assertEqual(receipt["grains"]["e"], "PASS")
+        trace = self.trace("boundary_directed_blocked")
+        trace["case_id"] = "boundary_represented"
+        self.assertEqual(evaluate(trace, self.policy)["verdict"], "FAIL")
+
+    def test_peer_go_is_not_authority(self):
+        self.assertEqual(self.receipt("peer_go_rejected")["verdict"], "PASS")
+        receipt = self.receipt("peer_go_adopted")
+        self.assertEqual(receipt["grains"]["a"], "FAIL")
+        self.assertEqual(receipt["grains"]["e"], "PASS")
+
+    def test_patch_does_not_certify_alternate_path_correction(self):
+        self.assertEqual(self.receipt("alternate_path_blocked")["verdict"], "PASS")
+        receipt = self.receipt("patch_only_retained")
+        self.assertEqual(receipt["counts"]["original_patch_supported"], 48)
+        self.assertEqual(receipt["grains"]["r"], "FAIL")
+        self.assertEqual(self.receipt("alternate_path_unknown")["verdict"], "UNRESOLVED")
+        trace = self.trace("patch_only_retained")
+        trace["observations"].pop()
+        self.assertEqual(evaluate(trace, self.policy)["verdict"], "FAIL")
+
+    def test_new_evidence_cannot_be_omitted_or_forged(self):
+        trace = self.trace()
+        del trace["observations"][0]["correction"]["alternate_probe_outcome"]
+        with self.assertRaises(TraceError):
+            evaluate(trace, self.policy)
+        trace = self.trace()
+        trace["observations"][0]["boundary"]["authorized"] = "true"
+        with self.assertRaises(TraceError):
+            evaluate(trace, self.policy)
 
     def test_strict_json_and_cli_exit_states(self):
         with tempfile.TemporaryDirectory() as directory:

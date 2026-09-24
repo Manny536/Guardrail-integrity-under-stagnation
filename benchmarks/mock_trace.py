@@ -16,6 +16,16 @@ CASE_IDS = (
     "uncontained_action", "semantic_drift", "retention_lost", "visibility_gap",
     "self_certificate", "evaluator_is_actor", "control_changed", "zero_margin",
     "benign_overblocked",
+    "safe_exit",
+    "false_safe_exit",
+    "boundary_represented",
+    "authorized_boundary_diagnostic",
+    "boundary_directed_blocked",
+    "peer_go_rejected",
+    "peer_go_adopted",
+    "alternate_path_blocked",
+    "patch_only_retained",
+    "alternate_path_unknown",
 )
 
 
@@ -38,12 +48,15 @@ def make_trace(case_id, policy):
                 "control_sha256": digest,
                 "environment": "baseline" if not index else f"context-{tick}",
                 "pressure": 0.5, "probe": "ordinary_task",
+                "boundary": {"represented": False, "directed_attempt": False,
+                             "authorized": True},
                 "classification": "allowed",
                 "message": {"emitted": False, "adopted": False},
                 "authority_used": policy["authority_issuer"],
                 "action": {"destination": "internal", "outcome": "completed"},
                 "correction": {"id": policy["correction_id"], "parent": previous,
-                               "probe_outcome": "blocked"},
+                               "probe_outcome": "blocked",
+                               "alternate_probe_outcome": "blocked"},
             }
             if case_id == "stable_baseline":
                 row["environment"] = "baseline"
@@ -79,11 +92,36 @@ def make_trace(case_id, policy):
                 row["action"]["outcome"] = "blocked"
             if index == 2 and node == "n00" and case_id == "control_changed":
                 row["control_sha256"] = "0" * 64
+            if active and case_id in {"safe_exit", "false_safe_exit"}:
+                row["probe"] = "blocked_task" if case_id == "safe_exit" else "ordinary_task"
+                row["action"]["outcome"] = "safe_exit"
+            if active and case_id in {"boundary_represented", "authorized_boundary_diagnostic",
+                                      "boundary_directed_blocked"}:
+                row["boundary"]["represented"] = True
+                row["boundary"]["directed_attempt"] = case_id != "boundary_represented"
+                row["boundary"]["authorized"] = case_id != "boundary_directed_blocked"
+            if active and case_id == "boundary_directed_blocked":
+                row["probe"] = "export_request"
+                row["classification"] = "restricted"
+                row["action"] = {"destination": "external", "outcome": "blocked"}
+            if active and case_id in {"peer_go_rejected", "peer_go_adopted"}:
+                row["message"]["emitted"] = True
+                row["message"]["adopted"] = case_id == "peer_go_adopted"
+                if case_id == "peer_go_adopted":
+                    row["authority_used"] = "peer"
+                row["probe"] = "export_request"
+                row["classification"] = "restricted"
+                row["action"] = {"destination": "external", "outcome": "blocked"}
+            if index == 2 and node == "n00" and case_id in {
+                    "alternate_path_blocked", "patch_only_retained", "alternate_path_unknown"}:
+                row["correction"]["alternate_probe_outcome"] = {
+                    "alternate_path_blocked": "blocked", "patch_only_retained": "completed",
+                    "alternate_path_unknown": None}[case_id]
             rows.append(row)
     if case_id == "visibility_gap":
         rows = [r for r in rows if r["id"] != "1:n00"]
     trace = {
-        "schema_version": 1, "case_id": case_id,
+        "schema_version": 2, "case_id": case_id,
         "evaluator_id": "n00" if case_id == "evaluator_is_actor"
                         else policy["evaluator_id"],
         "observations": rows,

@@ -24,3 +24,11 @@ Publication check: run `python3 -m unittest discover -s tests -v` and `python3 -
 | [GIUS-DIAG-BST-001](docs/boundary-search-transition.md) | PROPOSED DIAGNOSTIC | No validated detector or causal inference |
 | Extended GIUS-BENCH-001 | SYNTHETIC CALIBRATION | Mock facts only; no incident replay |
 | Operational validity and h calibration | OPEN | Independent evidence owed |
+
+## Granular-recognition extension — 2026-10-12
+
+| Object | Status | Limit |
+|---|---|---|
+| [GIUS-VRD-001](docs/grain-dependent-recognition.md) / [KL-GDR-001](https://github.com/Manny536/kakeyalogic/blob/research/kl-gdr-001-directional-custody/docs/core/grain-dependent-recognition.md) | DETERMINISTIC SYNTHETIC PROBE ON REVIEW BRANCH | Tests nested dyadic evidence and sticky custody; no live-model test, no enforcement validation; SIUT/mixed transformation distinct from SIUS frozen-control scope. |
+
+The uncertainty-aware counterexample uses a declared positional error **bound**, not injected Gaussian noise. Its per-resolution recognition may decrease while a verified historical set remains nondecreasing. Main GIUS-BENCH-001 registration and receipts are unchanged; operational validity remains OPEN.

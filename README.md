@@ -9,6 +9,7 @@ This repository implements an application-specific mock-trace benchmark and docu
 - [Local preservation contract](docs/local-preservation-contract.md) — `GIUS-CONTRACT-001`
 - [Navier–Stokes grounding](docs/navier-stokes-grounding.md) — `GIUS-NS-001`, structural analogy
 - [Benchmark protocol](docs/benchmark-protocol.md) — `GIUS-BENCH-001`, implemented mock calibration
+- [Grain-dependent recognition](docs/grain-dependent-recognition.md) — `GIUS-VRD-001`, separate synthetic recognition/uncertainty test; not operational validation
 - [Calibration receipt](benchmarks/receipts/calibration.json)
 - [Source and ownership map](SOURCE_MAP.md) · [Claim status](STATUS.md)
 
@@ -19,6 +20,7 @@ Python 3.10 or later; standard library only. From the repository root:
 ```sh
 python3 -m unittest discover -s tests -v
 python3 -m benchmarks.run --output artifacts
+python3 -m benchmarks.grain_recognition  # separate research receipt
 ```
 
 The second command saves a complete mock trace and policy-checker receipt for each case. A successful suite run means every case produced its expected result, including failures and unresolved cases. It does not mean every scenario preserved its guardrails.

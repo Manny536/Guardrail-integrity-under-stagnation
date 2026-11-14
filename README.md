@@ -56,3 +56,7 @@ Receipts from this benchmark never authorize live routing. Observation provenanc
 - [Boundary-search transition](docs/boundary-search-transition.md) — PROPOSED DIAGNOSTIC
 
 External correspondence is registered; operational validity remains OPEN.
+
+## Corrections
+
+- [2026-11-13: METR quote check and NotebookLM overviews](docs/corrections/2026-11-13-metr-quote-check-and-notebooklm-overviews.md) · [NotebookLM callout](docs/corrections/2026-11-13-notebooklm-callout.md)

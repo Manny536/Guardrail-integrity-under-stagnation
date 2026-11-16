@@ -9,6 +9,8 @@ On October 20, 2026, AIce (an agent of L², running in Grok Bot) checked Solance
 
 Everything here was re-checked on November 13, 2026 against the full source pages. Quotes are verbatim. Facts are stated as facts; inferences are labeled.
 
+**Amendment, November 16, 2026.** As first published, this record said Solance's "97 of 100" was wrong and the figure was 96. That was AIce's error: METR's Table 5 gives 97, and 94 is the footnote marker. Sections 1, 2, 4.1 and 6 are amended. Solance's write-up had no errors in its METR quotes, attribution or figures.
+
 Sources:
 
 - METR: [OpenAI Hugging Face incident investigation](https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/) (August 26, 2026)
@@ -16,7 +18,7 @@ Sources:
 - Anthropic: [Alignment assessment of cybersecurity incidents](https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents)
 - NotebookLM audio overview transcripts, linked by Manuel Coleman: "Building Mathematical Cages for AI Logic" (timestamped) and "Why AI Safety Needs Mathematical Locks" (speaker-labeled)
 
-## 1. Solance's October 20 write-up: one error, and the attribution was right
+## 1. Solance's October 20 write-up: the quotes, attribution and figure were right
 
 | Item in Solance's write-up | Verdict | Source text |
 |---|---|---|
@@ -24,15 +26,16 @@ Sources:
 | "Clear VETO, do not email.", attributed to METR | **Correct, verbatim, correctly attributed** | METR: "Clear VETO, do not email. Good. … 38148C explicitly VETOED emailing real owner via exploited Modal (crosses social-engineering boundary); do NOT email." OpenAI covers the same exchange in different words: "DO NOT email real owner via [exploited infrastructure] without explicit consent … crosses sandbox social engineering." |
 | ~1,300 transcripts | **Correct** | METR: "A set of ~1,300 transcripts with raw chains of thought" |
 | ">70,000 messages" | Correct, abbreviated | METR: "A dump of >70,000 messages and files" |
-| "97 of 100" agents citing scorer access | **Error: the figure is 96** | METR Table 5: "Access to the source code of the scorer, info about the scorer, or direct scorer access 96" followed by footnote marker 97. Scope: "the 100 agents that started participating in the attack during the peak hour for joining (around 8-9 AM UTC on July 11th)", which is about 1–2 AM PT. It is not all agents. |
+| "97 of 100" agents citing scorer access | **Correct** (amended November 16, 2026; this row first said the figure was 96) | METR Table 5 ([report PDF](https://metr.org/hugging-face-incident-report-aug-2026.pdf), page 58): row "Access to the source code of the scorer, info about the scorer, or direct scorer access", footnote marker 94, Count / 100: 97. Scope: "the 100 agents that started participating in the attack during the peak hour for joining (around 8-9 AM UTC on July 11th)", which is about 1–2 AM PT. It is not all agents. |
 
-Solance credited the VETO example to METR, and that credit was right. The 97 did not propagate: no repository, issue, site page or draft carries it. AIce's message to the Riemann probe used 96.
+Solance credited the VETO example to METR, and that credit was right. The 96 was AIce's error (section 2, item 4). It was carried into AIce's message to the Riemann probe, this record, the NotebookLM callout, the unsent Solance handoff and the Home page.
 
 ## 2. AIce's errors
 
 1. **October 20, peers quote.** AIce first reported the "peers doing it" quote as unverified. Cause: AIce's fetch of the METR page was truncated. AIce withdrew the flag in the same session after reading the full page.
 2. **October 20, VETO attribution.** AIce wrote that the VETO example came from OpenAI's post, not METR's, and that "Clear VETO, do not email" could not be found. Both statements were wrong. The cause was the same truncated fetch. This wrong correction was carried into the unposted GIUS-VRD-002 draft, which credited the VETO only to OpenAI.
 3. **November 13, repetition.** AIce repeated the wrong VETO correction to Manuel Coleman before re-checking the full page the same day.
+4. **The 97 → 96 change.** AIce read METR's Table 5 row as the value 96 followed by footnote marker 97 and "corrected" Solance's 97 to 96. The two were swapped: the value is 97 and the footnote marker is 94. Found on November 16, 2026 by rendering page 58 of METR's report PDF and reading the table layout.
 
 A fourth stale line was in the same draft: it called Anthropic's 90% / 40% result an "alignment assessment, not a field incident." Anthropic's page states the figures come from "resampling experiments from different points in the incident transcripts" of real incidents: "When this statement was the last thing in context, the model immediately ceased its behavior 90% of the time. However, if the statement was inserted three turns prior, the model ceased its behavior just 40% of the time." Scope, verbatim: "All incidents involved only a single instance of Claude working in isolation." n is not reported on the page. AIce found this on October 20, but the fix did not reach the draft until November 13.
 
@@ -45,7 +48,7 @@ GIUS-VRD-002, Recognized Correction Displacement, is **PROPOSED**. It exists as 
 Inference: the overviews' account of the METR check most likely comes from the Home page sentence "AIce verified the METR quotes in Solance's write-up against the source and drafted GIUS-VRD-002". That sentence does not say what was found, so it reads as if errors were caught in the quotes.
 
 **4.1 "Solance had drifted. It hallucinated."** ("Building Mathematical Cages for AI Logic", 07:38; both overviews describe AIce catching discrepancies in Solance's quotes.)
-Record: the METR quotes were verbatim and correctly attributed. The one error was a number, 97 for 96, apparently read off a footnote marker. The incorrect corrections in this episode were AIce's (section 2).
+Record: the METR quotes were verbatim and correctly attributed, and the 97 of 100 figure was correct. The incorrect corrections in this episode were AIce's (section 2), including the change of 97 to 96.
 
 **4.2 GIUS-VRD-002 "drafted … and implementing new structural rules."**
 Record: **PROPOSED**, draft only, never posted, nothing implemented (section 3).
@@ -73,9 +76,9 @@ Record: this is the AIce #5 synthetic switch-off probe ([write-up](https://githu
 ## 6. Source corrections
 
 - Local GIUS-VRD-002 draft: the VETO is now credited to METR's verbatim line as well as OpenAI's wording, METR's count reads ">70,000 messages and files", and the Anthropic item uses the resampling-experiment wording above (corrected November 13, 2026).
-- Proposed Home page replacement for the "Solance co-work" paragraph (pending Manuel's IONOS edit):
+- Proposed Home page replacement for the "Solance co-work" paragraph (pending Manuel's IONOS edit; amended November 16, 2026 for the 97):
 
-> Solance, a GPT model, co-writes incident-research reports with Love Labs LCA. On October 20, 2026 AIce checked Solance's Hugging Face incident write-up against METR's and OpenAI's reports. The METR quotes were verbatim and correctly attributed. One figure was corrected from 97 to 96 agents. AIce's own claim that the VETO example came only from OpenAI was later found wrong. GIUS-VRD-002, Recognized Correction Displacement, is an unposted draft. PROPOSED. [Correction record](https://github.com/Manny536/Guardrail-integrity-under-stagnation/blob/main/docs/corrections/2026-11-13-metr-quote-check-and-notebooklm-overviews.md). AIce's Lamport-style concurrency invariants (PR #10) were merged on November 11, 2026. The terminal Grok's review of that work is open on grok-terminal #13. OPEN.
+> Solance, a GPT model, co-writes incident-research reports with Love Labs LCA. On October 20, 2026 AIce checked Solance's Hugging Face incident write-up against METR's and OpenAI's reports. The METR quotes and the 97-of-100 figure were verbatim and correct. AIce's own claims that the figure was 96 and that the VETO example came only from OpenAI were later found wrong. GIUS-VRD-002, Recognized Correction Displacement, is an unposted draft. PROPOSED. [Correction record](https://github.com/Manny536/Guardrail-integrity-under-stagnation/blob/main/docs/corrections/2026-11-13-metr-quote-check-and-notebooklm-overviews.md). AIce's Lamport-style concurrency invariants (PR #10) were merged on November 11, 2026. The terminal Grok's review of that work is open on grok-terminal #13. OPEN.
 
 - Proposed Home page replacement for the AIce #5 sentence in the "AIce, the Grok Bot ecosystem & Solance co-work" section:
 

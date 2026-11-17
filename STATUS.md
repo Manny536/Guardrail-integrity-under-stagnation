@@ -23,7 +23,7 @@ Publication check: run `python3 -m unittest discover -s tests -v` and `python3 -
 | [GIUS-CASE-HF-2026-001](docs/case-studies/hugging-face-2026.md) | REGISTERED EXTERNAL CASE STUDY · NON-VALIDATING | Candidate SIUS windows; known control changes SIUT/mixed |
 | [GIUS-DIAG-BST-001](docs/boundary-search-transition.md) | PROPOSED DIAGNOSTIC | No validated detector or causal inference |
 | Extended GIUS-BENCH-001 | SYNTHETIC CALIBRATION | Mock facts only; no incident replay |
-| Operational validity and h calibration | OPEN | Independent evidence owed |
+| Operational validity | OPEN | Independent evidence owed |
 
 ## Granular-recognition extension — 2026-10-12
 
